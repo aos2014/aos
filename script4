@@ -1,0 +1,6 @@
+#!/bin/bash 
+ps ax|while read
+do
+    set -- $REPLY
+    [[ $1 =~ ^[0-9]+$ ]] && strace -p $1 -o log.$1 &
+done
